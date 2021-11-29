@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="../bootstrap.min.css" rel="stylesheet">
+    <script src="../bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link href="../index.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid mx-4">
+            <a class="navbar-brand" href="/">
+                <h3>AMDT</h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav  mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-light" aria-current="page" href="/amdt-quiz/">AMDT Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-light" aria-current="page" href="/creative-page/">My Creative
+                            Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-light" aria-current="page" href="/about-dev/">About the
+                            Developer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" aria-current="page" href="/contact-us/">Contact Us</a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Welcome to AMDT</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <div class="container">
+                        <label class="row">
+                            Email
+                        </label>
+                        <div class="row" id="emailResult"></div>
+                    </div>
+                    <div class="container">
+                        <label class="row fw-bold">
+                            Name
+                        </label>
+                        <div class="row" id="nameResult"></div>
+                    </div>
+                    <div class="container">
+                        <label class="row fw-bold">
+                            Promotional Material
+                        </label>
+                        <div class="row" id="contactMeResult"></div>
+                    </div>
+                    <div class="container">
+                        <label class="row fw-bold">
+                            Student Status
+                        </label>
+                        <div class="row" id="studentResult"></div>
+                    </div>
+                    <div class="container">
+                        <label class="row fw-bold">
+                            Feedback
+                        </label>
+                        <div class="row" id="feedbackResult"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-md py-5 my-5">
+        <form id="contact-us">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input class="form-control" id="name">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="contactMe">
+                <label class="form-check-label" for="contactMe">Contact me on the above given email</label>
+            </div>
+            <label class="form-label"> Are you a student of AMDT?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="student" id="studentYes" value="Yes">
+                <label class="form-check-label" for="studentYes">
+                    Yes
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="student" id="studentNo" value="No">
+                <label class="form-check-label" for="studentNo">
+                    No</label>
+            </div>
+            <div class="mb-3">
+                <label for="feedback" class="form-label">What is your feedback?</label>
+                <textarea class="form-control" id="feedback"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" onClick="showDetails(this.form)">Submit</button>
+
+            </div>
+        </form>
+    </div>
+    <script>
+        function isEmpty(value) {
+            return (value === undefined || value === null || value === '' || value.length <= 0) ? true : false;
+        }
+        function ValidateEmail(mail) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+                return (true)
+            }
+            alert("You have entered an invalid email address!")
+            return (false)
+        }
+        function showDetails(form) {
+            let values = [form.email.value, form.name.value, form.contactMe.checked, form.student.value, form.feedback.value]
+            let messages = ["Please input a correct email!", "Please input your name!", "This just works", "Please select your student status!", "Please input your feedback!"]
+            let allGood = true
+            values.map((value, index) => {
+                if (isEmpty(value)) {
+                    alert(messages[index]);
+                    allGood = false;
+
+                }
+                if (index === 0) {
+                    if (!ValidateEmail(value)) {
+                        allGood = false;
+                    }
+                }
+            })
+
+            if (allGood) {
+                var myModal = new bootstrap.Modal(document.getElementById('formModal'));
+                var modalBody = document.getElementById("modalBody");
+                document.getElementById("emailResult").innerHTML = form.email.value
+                document.getElementById("nameResult").innerHTML = form.name.value
+                document.getElementById("contactMeResult").innerHTML = form.contactMe.checked ? "Yes" : "No"
+                document.getElementById("studentResult").innerHTML = form.student.value
+                document.getElementById("feedbackResult").innerHTML = form.feedback.value
+                myModal.show()
+            }
+        }
+        var forms = document.getElementById('contact-us');
+
+        forms.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+        })
+
+    </script>
+</body>
+
+</html>

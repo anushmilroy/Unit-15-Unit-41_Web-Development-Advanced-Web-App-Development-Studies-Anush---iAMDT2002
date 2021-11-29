@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>Fixed top navbar example · Bootstrap v5.1</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbar-fixed/">
+  <!-- Bootstrap core CSS -->
+  <link href="./bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="index.css" rel="stylesheet">
+</head>
+
+<body>
+  <script src="./bootstrap.bundle.min.js"></script>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid mx-4">
+      <a class="navbar-brand" href="/">
+        <h3>AMDT</h3>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav  mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active fw-light" aria-current="page" href="/amdt-quiz/">AMDT Quiz</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fw-light" aria-current="page" href="/creative-page/">My Creative Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fw-light" aria-current="page" href="/about-dev/">About the Developer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fw-light" aria-current="page" href="/contact-us/">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    setTimeout(function () {
+      var myModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+      myModal.show()
+    }, 5000);
+  </script>
+  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="welcomeModalLabel">Welcome to AMDT</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="my-3">
+            Please utilize the navigation bar at the top to navigate.
+
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-video-text d-flex flex-column justify-content-center align-items-center text-center">
+    <h1 class="text-white display-1">Welcome to AMDT student hub</h1>
+    <br></br>
+    <h3 class="text-white display-5">Your Future to
+      Creativity Starts Here</h3>
+    <br></br>
+    <h5 class="text-white-50 fw-lighter  position-absolute bottom-0 mb-5">⥥ Scroll down</h5>
+  </div>
+  <video autoplay muted loop id="myVideo">
+    <source src="https://amdt.lk/wp-content/uploads/2021/07/home_video.mp4" type="video/mp4">
+
+  </video>
+
+
+  <div class="container my-5">
+    <h1 class="text-body text-center fw-normal my-5 py-5">Discover the variety of Creative degrees from Falmouth
+      University UK
+      and
+      BTEC HNDs
+      from Pearson UK.</h1>
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">BA (Hons) Fashion Design
+        </h2>
+        <p class="lead">
+          The ‘Web & App Development’ degree level course at ‘AMDT, School of Creativity’ explores the world of
+          internet, development and technology. The course emphasizes the practical and technical skills required to
+          develop content for the web, mobile, and various other devices.</p>
+      </div>
+      <div class="col-md-5">
+        <img src="https://amdt.lk/wp-content/uploads/2021/06/fashion_d.jpg" class="img-fluid featurette-image"></img>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Creative
+          Advertising </h2>
+        <p class="lead">
+          The ‘Creative Advertising’ degree level course at ‘AMDT, School of Creativity’ explores advertising and
+          communication skill sets, with exposure in brand strategy, marketing strategy, digital marketing, social
+          media, behavioural economics, behavioural science, advertising, copywriting, and creative direction.
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="https://amdt.lk/wp-content/uploads/2021/06/ad_d.jpg" class="img-fluid featurette-image"></img>
+      </div>
+
+    </div>
+
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Photography</h2>
+        <p class="lead">The ‘Photography’ degree level course at ‘AMDT, School of Creativity’ explores
+          experimentation
+          with both traditional and digital photography with an emphasis on art cultural studies and video
+          production.
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img src="https://amdt.lk/wp-content/uploads/2021/06/ph_d.jpg" class="img-fluid featurette-image"></img>
+
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+  </div>
+
+
+
+
+</body>
+
+</html>

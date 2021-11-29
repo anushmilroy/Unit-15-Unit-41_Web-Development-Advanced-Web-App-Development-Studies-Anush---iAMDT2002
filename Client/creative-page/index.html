@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="../bootstrap.min.css" rel="stylesheet">
+    <script src="../bootstrap.bundle.min.js"></script>
+    <script src="./jquery.js"></script>
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link href="../index.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid mx-4">
+            <a class="navbar-brand" href="/">
+                <h3>AMDT</h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav  mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-light" aria-current="page" href="/amdt-quiz/">AMDT Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" aria-current="page" href="/creative-page/">My Creative
+                            Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-light" aria-current="page" href="/about-dev/">About the
+                            Developer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-light" aria-current="page" href="/contact-us/">Contact Us</a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="py-5 my-5 ">
+        <div class="px-md-5 px-2 m-auto">
+            <div class="creative-start__open-box scale-up-hor-left"></div>
+            <div class="creative-start__cover" style="position: relative;">
+                <div style="position: absolute;" class="creative-start__image-cover"></div>
+            </div>
+
+            <div class=" d-flex flex-column mx-2">
+                <div class="">
+                    <h2 class="fw-normal mx-2" id="hi" style="">
+                        Hello! This is my
+                    </h2>
+                </div>
+                <div class="">
+                    <h2 class="fw-normal display-3 creative-page" id="first" style="">
+                        Creative <span></span>
+                    </h2>
+                </div>
+
+                <div class="">
+                    <h2 class="fw-lighter display-3 creative-page" id="last" style="">
+                        Page <span></span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log('test')
+        var startBox = false;
+        var startCover = false;
+        var startImage = false;
+        var box = $("div.creative-start__open-box");
+        var cover = $("div.creative-start__cover");
+        var imageCover = $("div.creative-start__image-cover");
+        var hi = $("#hi");
+        var first = $("#first");
+        var last = $("#last");
+        box.addClass("scale-up-hor-left")
+        box.on("animationend webkitAnimationEnd oAnimationEnd", (event) => {
+            if (!startBox) {
+
+                box.removeClass("scale-up-hor-left")
+                box.addClass("scale-down-hor-right")
+                startBox = true;
+            }
+            else {
+                startCover = true;
+                imageCover.addClass("scale-up-ver-top")
+                hi.addClass("creative-start__hi")
+                first.addClass("creative-start__first")
+                last.addClass("creative-start__last")
+
+            }
+
+        })
+        imageCover.on("animationend webkitAnimationEnd oAnimationEnd", (event) => {
+            if (startCover) {
+                startImage = true;
+                cover.prepend(`<img src="anush2.jpeg" style="top: 0; position: absolute; width: 100%; height: 100%"></img>`)
+                startBox = true;
+            }
+            else {
+                startCover = true;
+            }
+            if (startImage) {
+                imageCover.addClass("scale-down-ver-bot")
+
+            }
+
+        })
+        box.addClass("scale-up-hor-left")
+        box.on("animationend webkitAnimationEnd oAnimationEnd", (event) => {
+            box.removeClass("scale-up-hor-left")
+            box.addClass("scale-down-hor-right")
+        })
+
+
+
+        forms.addEventListener("submit", (event) => {
+            event.preventDefault();
+            document.getElementById('inner-results')?.remove();
+
+            let counter = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let value = event.target.elements[`question${i}`].value;
+                counter += Number.parseInt(value ? value : 0);
+                console.log(Number.parseInt(event.target.elements[`question${i}`].value))
+            }
+            console.log(counter)
+            const childDiv = document.createElement('div')
+            childDiv.id = "inner-results"
+            counter = counter < 0 ? 0 : counter;
+            if (counter > 12) {
+                childDiv.innerHTML = `< div class= "alert alert-success" role = "alert" >
+                <h5 class='text-success'>Congratulations</h5>
+                <br></br>
+                <p>Congratulations! You have scored ${counter} out of 20 points</p>
+            </div > `
+                document.getElementById("quiz-results").appendChild(childDiv)
+            }
+            else {
+                childDiv.innerHTML = `< div class= "alert alert-danger" role = "alert" >
+                    <h5 class='text-danger'>Try
+                        harder next time!</h5>
+                    <br></br>
+                    <p>“Try
+                        harder next time! You have received only ${counter} out of 20 points</p>
+                </div >`
+                document.getElementById("quiz-results").appendChild(childDiv)
+            }
+        })
+
+    </script>
+</body>
+
+</html>
